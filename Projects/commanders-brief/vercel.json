@@ -1,0 +1,26 @@
+{
+  "rewrites": [
+    { "source": "/edit", "destination": "/index.html" },
+    { "source": "/display", "destination": "/display.html" }
+  ],
+  "headers": [
+    {
+      "source": "/basemap.jpg",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/CNAFR_Command_Logo.png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+/* CNAFR Commander's Update - Display/Briefing Page */
+
+body.display-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--black);
+}
+
+/* Header */
+#display-header {
+  background: var(--navy);
+  border-bottom: 3px solid var(--gold);
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.header-logo {
+  height: 52px;
+  width: auto;
+  flex-shrink: 0;
+}
+.header-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#display-header .header-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+#display-header .header-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Header nav button */
+.nav-btn {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.nav-btn:hover {
+  background: rgba(221,194,111,0.1);
+  text-decoration: none;
+}
+
+/* KPI Row */
+#kpi-row {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.kpi-card {
+  flex: 1;
+  text-align: center;
+  padding: 10px 16px;
+  border-right: 1px solid var(--border);
+}
+.kpi-card:last-child { border-right: none; }
+.kpi-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.1;
+}
+.kpi-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Main content area */
+#display-main {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Map pane */
+#map-pane {
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid var(--border);
+  background: var(--map-bg);
+}
+
+/* Tables pane */
+#tables-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--bg-primary);
+}
+
+/* Table sections */
+.table-section {
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.table-section:last-child { border-bottom: none; }
+
+.table-section-header {
+  background: var(--bg-secondary);
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.table-section-header h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.data-table th {
+  text-align: left;
+  padding: 5px 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+  background: var(--th-bg);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--row-border);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+
+.data-table .col-mission { min-width: 120px; }
+.data-table .col-assets { color: var(--text-secondary); }
+.data-table .col-status { min-width: 100px; }
+.data-table .col-date {
+  color: var(--text-secondary);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.data-table .col-number {
+  text-align: right;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--gold);
+}
+.data-table .col-route {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* Footer / classification bar (optional) */
+#display-footer {
+  flex-shrink: 0;
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  padding: 4px 24px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Table row hover highlight (map interaction) */
+.data-table tr.row-highlight td {
+  background: rgba(221,194,111,0.08);
+}
+.data-table tr[data-route-key] {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+/* Fullscreen mode */
+body.display-page.is-fullscreen #display-header,
+body.display-page.is-fullscreen #display-footer,
+body.display-page.is-fullscreen #kpi-row {
+  display: none;
+}
+body.display-page.is-fullscreen #display-main {
+  flex: 1;
+}
+
+/* Print */
+@media print {
+  @page {
+    size: landscape;
+    margin: 0.5cm;
+  }
+  body.display-page {
+    height: auto;
+    overflow: visible;
+  }
+  .nav-btn, .map-reset-btn, #btn-fullscreen {
+    display: none !important;
+  }
+  #display-main {
+    page-break-inside: avoid;
+  }
+}
+
+/* Responsive: if someone opens on a small screen */
+@media (max-width: 900px) {
+  #display-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  #map-pane { border-right: none; border-bottom: 1px solid var(--border); }
+}

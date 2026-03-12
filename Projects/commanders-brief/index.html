@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNAFR Commander's Update - Editor</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="js/theme-toggle.js"></script>
+</head>
+<body class="admin-page">
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <img src="CNAFR_Command_Logo.png" alt="CNAFR" class="toolbar-logo">
+    <h1>Commander's Update &mdash; Editor</h1>
+    <div class="btn-group">
+      <button id="btn-save" class="btn-primary">Save to Browser</button>
+      <button id="btn-load" class="btn-secondary">Load</button>
+      <span class="separator"></span>
+      <button id="btn-export" class="btn-secondary">Export JSON</button>
+      <button id="btn-import" class="btn-secondary">Import JSON</button>
+      <input type="file" id="import-file" class="hidden-input" accept=".json">
+      <span class="separator"></span>
+      <span id="save-indicator" class="save-indicator"></span>
+      <button class="theme-toggle btn-secondary"></button>
+      <a href="display.html" class="display-link">&#9654; Display</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="admin-main">
+
+    <!-- Overview -->
+    <div class="editor-section">
+      <div class="section-header">
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <div id="overview-fields" class="field-grid"></div>
+      </div>
+    </div>
+
+    <!-- Current Missions -->
+    <div class="editor-section">
+      <div class="section-header">
+        <h2>Current Missions</h2>
+        <button class="btn-add" data-add="currentMissions">+ Add Mission</button>
+      </div>
+      <div class="section-body">
+        <div id="list-current-missions"></div>
+      </div>
+    </div>
+
+    <!-- Planned Missions -->
+    <div class="editor-section">
+      <div class="section-header">
+        <h2>Planned Missions (7-Day Horizon)</h2>
+        <button class="btn-add" data-add="plannedMissions">+ Add Mission</button>
+      </div>
+      <div class="section-body">
+        <div id="list-planned-missions"></div>
+      </div>
+    </div>
+
+    <!-- Personnel -->
+    <div class="editor-section">
+      <div class="section-header">
+        <h2>Mobilized Personnel</h2>
+        <button class="btn-add" data-add="personnel">+ Add Row</button>
+      </div>
+      <div class="section-body">
+        <div id="list-personnel"></div>
+      </div>
+    </div>
+
+    <!-- Map Configuration -->
+    <div class="editor-section">
+      <div class="section-header">
+        <h2>Map Configuration</h2>
+      </div>
+      <div class="section-body">
+
+        <!-- Basemap upload -->
+        <div class="map-upload-area">
+          <button class="btn-secondary" onclick="document.getElementById('basemap-file').click()">
+            Upload Basemap
+          </button>
+          <input type="file" id="basemap-file" class="hidden-input" accept="image/*">
+          <span id="basemap-name" class="file-info">No basemap loaded</span>
+          <button id="basemap-clear" class="btn-danger" style="display:none">Remove</button>
+        </div>
+
+        <!-- Calibration -->
+        <div class="map-controls-grid">
+          <div class="calibration-group">
+            <h3>Image Calibration (% of image)</h3>
+            <div id="cal-rect-fields" class="calibration-fields"></div>
+          </div>
+          <div class="calibration-group">
+            <h3>Geographic Bounds</h3>
+            <div id="cal-geo-fields" class="calibration-fields"></div>
+          </div>
+        </div>
+
+        <!-- Locations -->
+        <div class="locations-header">
+          <h3>Map Locations</h3>
+          <button class="btn-add" data-add="locations">+ Add Location</button>
+        </div>
+        <div id="list-locations"></div>
+
+        <!-- Map preview -->
+        <div class="map-preview-wrapper">
+          <h3>Map Preview</h3>
+          <div id="map-preview"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/icao.js"></script>
+  <script src="js/basemap-outlines.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/map-engine.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

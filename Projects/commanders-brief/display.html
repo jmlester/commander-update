@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNAFR Commander's Update</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/display.css">
+  <script src="js/theme-toggle.js"></script>
+</head>
+<body class="display-page">
+
+  <!-- Header -->
+  <header id="display-header">
+    <img src="CNAFR_Command_Logo.png" alt="CNAFR" class="header-logo">
+    <div class="header-center">
+      <div class="header-title" id="header-title"></div>
+      <div class="header-date" id="header-date"></div>
+    </div>
+    <button id="btn-fullscreen" class="nav-btn">Fullscreen</button>
+    <button class="theme-toggle nav-btn"></button>
+    <a href="index.html" class="nav-btn">&#9998; Edit</a>
+  </header>
+
+  <!-- KPI Row -->
+  <div id="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-assets">--</div>
+      <div class="kpi-label">Total Assets Deployed</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-missions">--</div>
+      <div class="kpi-label">Current Missions</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" id="kpi-personnel">--</div>
+      <div class="kpi-label">Personnel Mobilized (RC)</div>
+    </div>
+  </div>
+
+  <!-- Main: Map + Tables -->
+  <main id="display-main">
+
+    <!-- Map -->
+    <div id="map-pane"></div>
+
+    <!-- Tables -->
+    <div id="tables-pane">
+
+      <!-- Current Missions -->
+      <div class="table-section">
+        <div class="table-section-header">
+          <h3>Current Missions</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mission</th>
+              <th>Assets</th>
+              <th>Status</th>
+              <th>Route</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-current"></tbody>
+        </table>
+      </div>
+
+      <!-- Planned Missions -->
+      <div class="table-section">
+        <div class="table-section-header">
+          <h3>Planned Missions &mdash; 7-Day Horizon</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mission</th>
+              <th>Assets</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Route</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-planned"></tbody>
+        </table>
+      </div>
+
+      <!-- Personnel -->
+      <div class="table-section">
+        <div class="table-section-header">
+          <h3>Mobilized Personnel Status</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order Type</th>
+              <th style="text-align:right">Personnel</th>
+              <th>Key Units</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-personnel"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="display-footer">
+    CNAFR &mdash; Commander, Navy Air Force Reserve &mdash; For Official Use Only
+  </footer>
+
+  <script src="js/icao.js"></script>
+  <script src="js/basemap-outlines.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/map-engine.js"></script>
+  <script src="js/display.js"></script>
+</body>
+</html>

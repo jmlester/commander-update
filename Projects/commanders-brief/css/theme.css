@@ -1,0 +1,244 @@
+/* CNAFR Commander's Update - Shared Theme */
+
+/* ── Dark theme (default) ── */
+:root {
+  --navy: #05294B;
+  --gold: #DDC26F;
+  --black: #141414;
+  --light-gray: #F0F0F0;
+  --highlight: #F8FF8F;
+
+  --bg-primary: #0d1b2a;
+  --bg-secondary: #1b2d44;
+  --bg-card: #162235;
+  --bg-input: #0f2236;
+  --text-primary: #e0e0e0;
+  --text-secondary: #8899aa;
+  --text-muted: #556677;
+  --border: #2a3f55;
+  --border-light: #344b63;
+
+  --row-border: rgba(42,63,85,0.3);
+  --th-bg: rgba(0,0,0,0.15);
+  --btn-secondary-hover: #243b55;
+  --map-bg: #0d1b2a;
+
+  --status-routine-bg: #1a4d2e;
+  --status-routine-fg: #5dba7d;
+  --status-routine-bd: #2d6e45;
+  --status-info-bg: #0c3d5e;
+  --status-info-fg: #5db8e8;
+  --status-info-bd: #1a5a7a;
+  --status-warn-bg: #4a3d1a;
+  --status-warn-fg: #DDC26F;
+  --status-warn-bd: #6b5a2a;
+  --status-danger-bg: #5e1a1a;
+  --status-danger-fg: #e85d5d;
+  --status-danger-bd: #7a2a2a;
+}
+
+/* ── Light theme ── */
+[data-theme="light"] {
+  --gold: #8a6d1a;
+
+  --bg-primary: #f4f5f7;
+  --bg-secondary: #e8eaed;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555e6b;
+  --text-muted: #8895a5;
+  --border: #ccd1d9;
+  --border-light: #dde1e7;
+
+  --row-border: rgba(0,0,0,0.07);
+  --th-bg: rgba(0,0,0,0.04);
+  --btn-secondary-hover: #d8dce2;
+
+  --status-routine-bg: #e6f5ec;
+  --status-routine-fg: #1a7a3a;
+  --status-routine-bd: #b0d8c0;
+  --status-info-bg: #e3f0fa;
+  --status-info-fg: #1a5a8a;
+  --status-info-bd: #a8cde8;
+  --status-warn-bg: #faf3e0;
+  --status-warn-fg: #7a6010;
+  --status-warn-bd: #dcc880;
+  --status-danger-bg: #fde8e8;
+  --status-danger-fg: #b82020;
+  --status-danger-bd: #e8a0a0;
+}
+
+/* ── Light-mode select arrow (needs explicit override since it's inline SVG) ── */
+[data-theme="light"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555e6b'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 6px 14px;
+  transition: background 0.15s;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 13px;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+}
+input[type="number"] { -moz-appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button { opacity: 1; }
+
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238899aa'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+/* Shared button styles */
+.btn-primary {
+  background: var(--navy);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-primary:hover { background: #0a3a6b; }
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--btn-secondary-hover); }
+
+.btn-danger {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-fg);
+  border: 1px solid var(--status-danger-bd);
+  font-size: 11px;
+  padding: 4px 8px;
+}
+.btn-danger:hover { background: var(--status-danger-bd); }
+
+.btn-add {
+  background: transparent;
+  color: var(--gold);
+  border: 1px dashed var(--border);
+  font-size: 12px;
+  padding: 4px 12px;
+}
+.btn-add:hover { border-color: var(--gold); background: rgba(221,194,111,0.05); }
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.status-routine {
+  background: var(--status-routine-bg);
+  color: var(--status-routine-fg);
+  border: 1px solid var(--status-routine-bd);
+}
+.status-info {
+  background: var(--status-info-bg);
+  color: var(--status-info-fg);
+  border: 1px solid var(--status-info-bd);
+}
+.status-warn {
+  background: var(--status-warn-bg);
+  color: var(--status-warn-fg);
+  border: 1px solid var(--status-warn-bd);
+}
+.status-danger {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-fg);
+  border: 1px solid var(--status-danger-bd);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* Map reset button (always dark — it sits on the map) */
+.map-reset-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(5, 41, 75, 0.9);
+  color: #e0e0e0;
+  border: 1px solid #2a3f55;
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 3px;
+  z-index: 10;
+}
+.map-reset-btn:hover { background: #05294B; }
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 9999;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast-success {
+  background: var(--status-routine-bg);
+  color: var(--status-routine-fg);
+  border: 1px solid var(--status-routine-bd);
+}
+.toast-error {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-fg);
+  border: 1px solid var(--status-danger-bd);
+}
+.toast-info {
+  background: var(--status-info-bg);
+  color: var(--status-info-fg);
+  border: 1px solid var(--status-info-bd);
+}
